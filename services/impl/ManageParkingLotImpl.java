@@ -1,12 +1,12 @@
-package serviceImpl;
+package services.impl;
 
 import enums.Color;
 import enums.VehicleType;
 import java.util.List;
 import models.Floor;
 import models.ParkingLot;
+import models.Slot;
 import services.ManageParkingLot;
-import java.util.*;
 
 public class ManageParkingLotImpl implements ManageParkingLot {
 
@@ -29,21 +29,33 @@ public class ManageParkingLotImpl implements ManageParkingLot {
 
     List<Floor> floors = parkingLot.getFloor();
     int size = floors.size();
-    String ticket;
+    int slotNo = -1;
 
     for (int i = 0; i < size; i++) {
 
-      ticket = bookFirstEmptySlotAndGetTicket(floors.get(i), vehicleType, vehicleRegNum);
-      if (Objects.nonNull(ticket)) {
-        return ticket;
+      slotNo = bookFirstEmptySlot(floors.get(i), vehicleType, vehicleRegNum);
+      if (slotNo != -1) {
+        return getParkingTicket(parkingLot.getId(), i, slotNo);
       }
     }
 
     return null;
   }
 
-  String bookFirstEmptySlotAndGetTicket(Floor floor, VehicleType vehicleType, String vehicleRegNum) {
+  public String getParkingTicket(String parkingLotId, int floorNo, int slotNo) {
+    return parkingLotId + "_" + floorNo + "_" + slotNo;
+  }
 
-    return "TICK123";
+  public int bookFirstEmptySlot(Floor floor, VehicleType vehicleType, String vehicleRegNum) {
+
+    List<Slot> slots = floor.getSlots();
+    for (Slot slot : slots) {
+
+      if (!slot.isOccupied()) {
+        return slot.getSlotNo();
+      }
+    }
+
+    return -1;
   }
 }

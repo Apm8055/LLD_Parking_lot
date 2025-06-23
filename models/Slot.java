@@ -18,6 +18,14 @@ public class Slot {
     this.vehicleType = VehicleType.DEFAULT;
   }
 
+  public boolean isOccupied(){
+    return this.occupied;
+  }
+
+  public int getSlotNo(){
+    return this.slotNo;
+  }
+
   @Override
   public String toString() {
 

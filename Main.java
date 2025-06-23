@@ -2,8 +2,8 @@ import enums.Color;
 import enums.VehicleType;
 import java.util.*;
 import models.ParkingLot;
-import serviceImpl.ManageParkingLotImpl;
 import services.ManageParkingLot;
+import services.impl.ManageParkingLotImpl;
 
 public class Main {
 

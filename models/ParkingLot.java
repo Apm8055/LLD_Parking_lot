@@ -20,6 +20,10 @@ public class ParkingLot {
     return this.floors;
   }
 
+  public String getId(){
+    return this.Id;
+  }
+
   public void addFloor(Floor floor){
     this.floors.add(floor);
   }

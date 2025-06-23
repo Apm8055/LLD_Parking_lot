@@ -17,6 +17,10 @@ public class Floor {
     }
   }
 
+  public List<Slot> getSlots(){
+    return this.slots;
+  }
+
   @Override
   public String toString() {
 
