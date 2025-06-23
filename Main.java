@@ -7,6 +7,8 @@ import services.impl.ManageParkingLotImpl;
 
 public class Main {
 
+  private static final ManageParkingLot manageParkingLot = new ManageParkingLotImpl();
+
   public static void main(String[] args) {
     System.out.println("Let's Begin, give commands");
 
@@ -40,15 +42,12 @@ public class Main {
       System.out.println("Invalid command");
     }
 
-    // Improve
-    ManageParkingLot manageParkingLot = new ManageParkingLotImpl();
     return manageParkingLot.createParkingLot(commands[1], Integer.parseInt(commands[2]), Integer.parseInt(commands[3]));
   }
 
   public static void processUserCommands(String command, ParkingLot parkingLot) {
 
     String[] commands = command.split(" ");
-    ManageParkingLot manageParkingLot = new ManageParkingLotImpl();
     switch (commands[0]) {
 
       case "show_parking_lot":
@@ -71,6 +70,9 @@ public class Main {
         }
         break;
 
+      case "unpark_vehicle":
+
+
 
       default:
         System.out.println("Invalid Command");
@@ -81,6 +83,7 @@ public class Main {
 // create_parking_lot PR12 1 2
 // show_parking_lot
 // add_floor 2 2
+// park_vehicle car Reg123 Red
 
 
 

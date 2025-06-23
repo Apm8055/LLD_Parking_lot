@@ -42,20 +42,28 @@ public class ManageParkingLotImpl implements ManageParkingLot {
     return null;
   }
 
-  public String getParkingTicket(String parkingLotId, int floorNo, int slotNo) {
+  private String getParkingTicket(String parkingLotId, int floorNo, int slotNo) {
     return parkingLotId + "_" + floorNo + "_" + slotNo;
   }
 
-  public int bookFirstEmptySlot(Floor floor, VehicleType vehicleType, String vehicleRegNum) {
+  private int bookFirstEmptySlot(Floor floor, VehicleType vehicleType, String vehicleRegNum) {
 
     List<Slot> slots = floor.getSlots();
     for (Slot slot : slots) {
 
       if (!slot.isOccupied()) {
+        slot.setOccupied();
         return slot.getSlotNo();
       }
     }
 
     return -1;
+  }
+
+  @Override
+  public boolean unParkVehicle(ParkingLot parkingLot, String ticket){
+
+    String[] ticket_splitted = ticket.split("_");
+
   }
 }

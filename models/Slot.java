@@ -22,6 +22,10 @@ public class Slot {
     return this.occupied;
   }
 
+  public void setOccupied(){
+    this.occupied = true;
+  }
+
   public int getSlotNo(){
     return this.slotNo;
   }
