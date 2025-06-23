@@ -16,7 +16,7 @@ public class ParkingLot {
     }
   }
 
-  public List<Floor> getFloor(){
+  public List<Floor> getFloors(){
     return this.floors;
   }
 

@@ -27,7 +27,7 @@ public class ManageParkingLotImpl implements ManageParkingLot {
   @Override
   public String parkVehicle(ParkingLot parkingLot, VehicleType vehicleType, String vehicleRegNum, Color color) {
 
-    List<Floor> floors = parkingLot.getFloor();
+    List<Floor> floors = parkingLot.getFloors();
     int size = floors.size();
     int slotNo = -1;
 
@@ -35,7 +35,7 @@ public class ManageParkingLotImpl implements ManageParkingLot {
 
       slotNo = bookFirstEmptySlot(floors.get(i), vehicleType, vehicleRegNum);
       if (slotNo != -1) {
-        return getParkingTicket(parkingLot.getId(), i, slotNo);
+        return getParkingTicket(parkingLot.getId(), i+1, slotNo);
       }
     }
 
@@ -61,9 +61,12 @@ public class ManageParkingLotImpl implements ManageParkingLot {
   }
 
   @Override
-  public boolean unParkVehicle(ParkingLot parkingLot, String ticket){
+  public void unParkVehicle(ParkingLot parkingLot, String ticket){
 
     String[] ticket_splitted = ticket.split("_");
+    int floorNo = Integer.parseInt(ticket_splitted[1]);
+    int slotNo = Integer.parseInt(ticket_splitted[2]);
 
+    parkingLot.getFloors().get(floorNo-1).getSlots().get(slotNo-1).setUnOccupied();
   }
 }

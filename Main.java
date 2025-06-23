@@ -71,8 +71,8 @@ public class Main {
         break;
 
       case "unpark_vehicle":
-
-
+        manageParkingLot.unParkVehicle(parkingLot, commands[1]);
+        break;
 
       default:
         System.out.println("Invalid Command");
@@ -84,6 +84,7 @@ public class Main {
 // show_parking_lot
 // add_floor 2 2
 // park_vehicle car Reg123 Red
+// unpark_vehicle PR12_1_1
 
 
 

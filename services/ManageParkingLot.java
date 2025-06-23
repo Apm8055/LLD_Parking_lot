@@ -9,5 +9,5 @@ public interface ManageParkingLot {
   ParkingLot createParkingLot(String parkingLotId, int numberOfFloors, int slotsPerFloor);
   void addFloor(ParkingLot parkingLot, int floorNo, int NumOfSlots);
   String parkVehicle(ParkingLot parkingLot, VehicleType vehicleType, String VehicleRegNum, Color color);
-  boolean unParkVehicle(ParkingLot parkingLot, String ticket);
+  void unParkVehicle(ParkingLot parkingLot, String ticket);
 }

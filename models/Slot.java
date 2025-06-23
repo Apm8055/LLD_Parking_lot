@@ -26,6 +26,10 @@ public class Slot {
     this.occupied = true;
   }
 
+  public void setUnOccupied(){
+    this.occupied = false;
+  }
+
   public int getSlotNo(){
     return this.slotNo;
   }
